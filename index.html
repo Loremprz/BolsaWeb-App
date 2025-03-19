@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="nav-bar">
+        <span>Bolsa de trabajo</span>
+        <img class="img-burger" src="/img/menu.png" alt="menú" id="burger-icon">
+        <!-- Menú -->
+        <div id="side-menu" class="side-menu">
+            <a href="javascript:void(0)" class="closebtn" id="close-btn">&times;</a>
+            <a href="#Inicio">Inicio</a>
+            <a href="#Información">Vacantes</a>
+            <a href="#Contacto">Contacto</a>
+            <br> <br>
+            <a href="/view/login.html">Iniciar sesión</a>
+        </div>
+    </div>
+
+
+    <div class="content">
+        <div class="margin" id="Inicio">
+            <section class="mssg-section">
+                <p class="mssg"> Maecenas con </p>
+                <span class="mssg-p"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, deserunt.
+                    Exercitationem repellat adipisci recusandae odio nam facilis repellendus molestiae
+                    reiciendis!</span>
+            </section>
+
+            <section class="information">
+                <div class="block" id="Información">
+                    <div>
+                        <br> <br>
+                        <span>Vacantes</span>
+                    </div>
+
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder=" Buscar ...">
+                        <br>
+                        <div class="cards-information" id="cards-information">
+                        </div>
+                    </div>
+
+                    <div class="contact" id="Contacto">
+                        <br>
+                        <span> Contactanos </span>
+                        <br> <br>
+                        <form action="#" class="contact-form">
+                            <input type="text" placeholder="Nombre">
+                            <input type="text" placeholder="Correo">
+                            <textarea name="" id="" placeholder="Asunto ..."></textarea>
+                            <br>
+                            <button>Enviar</button>
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="nav-bar-bttm">
+        <span> Bolsa de trabajo - 2025 </span>
+    </div>
+
+</body>
+
+<script type="module" src="/js/show.js"></script>
+<script>
+    document.getElementById("burger-icon").addEventListener("click", function () {
+        document.getElementById("side-menu").style.width = "250px";
+    });
+
+    document.getElementById("close-btn").addEventListener("click", function () {
+        document.getElementById("side-menu").style.width = "0";
+    });
+</script>
+
+</html>

@@ -1,0 +1,146 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/*BARRA DE NAVEGACIÓN // MENÚ EMERGENTE*/
+.nav-bar {
+    height: 70px;
+    width: 100%;
+    background-color: limegreen;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.nav-bar span{
+    color:white;
+    font-size: 30px;
+    margin-left: 10px;
+}
+
+.img-burger{
+    height: 70px;
+    transition: transform 0.1s ease-in-out;
+    margin-right: 5px;
+}
+
+.img-burger:active{
+    transform: scale(1.1);
+}
+
+/* Menú emergente */
+.side-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000; /* Asegúrate de que el z-index sea mayor que cualquier otro elemento */
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.side-menu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-menu a:hover {
+    color: #f1f1f1;
+}
+
+.side-menu .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Fondo oscuro detrás del menú */
+.side-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    z-index: 999; /* Debe estar justo debajo del menú */
+    display: none; /* Oculto por defecto */
+}
+
+/* DIVS  */
+.nuevo-div {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px auto 5px auto;
+}
+
+.nuevo-div:last-child{
+    margin-bottom: 100px;
+}
+
+.puesto-div,.info-div,.tipo-contratacion-div,.educacion-div, .ubicacion-div ,.salario-div{
+    width: 95%;
+    margin: auto;
+    padding: 5px;
+    background: none;
+    border: none;
+    color: black;
+}
+
+.editar-div, .guardar-div, .eliminar-div, #agregar, #borrar{
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+.bttns-manager{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid #272626;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.bttns-manager button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(52, 167, 52);
+    color: white;
+    font-size: 20px;
+}
+
+.bttns-manager button:hover {
+    background-color: darkgreen;
+}
+
+textarea {
+    min-height: 100px;
+}
+
+::placeholder{
+    font-style: oblique;
+}

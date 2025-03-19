@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager</title>
+    <link rel="stylesheet" href="/css/manager.css">
+</head>
+
+<body>
+    <div class="nav-bar">
+        <img id="burger-icon" class="img-burger" src="/img/menu.png" alt="menú">
+        <span> Manager </span>
+    </div>
+
+    <div class="bttns-manager">
+        <button id="agregar">Agregar</button>
+    </div>
+    <div>
+        <input type="text" id="search" class="search-manager" placeholder="Buscar...">
+    </div>
+    <div id="contenedor" class="contenedor"></div>
+
+    <div id="side-menu" class="side-menu">
+        <a href="javascript:void(0)" class="closebtn" id="close-btn">&times;</a>
+        <a href="#">Repositorio</a>
+        <br> <br>
+        <a href="#" id="logout-btn">Cerrar sesión</a>
+    </div>
+
+    <!-- Cargar los archivos JS -->
+    <script type="module" src="/js/connection.js"></script>
+    <script type="module" src="/js/newdiv.js"></script>
+    <script type="module">
+        import { signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+        import { auth } from "/js/connection.js";
+
+        document.getElementById('burger-icon').addEventListener('click', function () {
+            document.getElementById('side-menu').style.width = '80%';
+        });
+
+        document.getElementById('close-btn').addEventListener('click', function () {
+            document.getElementById('side-menu').style.width = '0';
+        });
+
+        // Función para cerrar sesión
+        document.getElementById('logout-btn').addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+                window.location.replace("/view/login.html"); // Reemplaza la URL sin mantener el historial
+                console.log("Sesión cerrada correctamente.");
+            } catch (error) {
+                console.error("Error al cerrar sesión:", error);
+            }
+        });
+    </script>
+    <script>
+        // Mejorar el rendimiento de la búsqueda usando requestAnimationFrame
+        let searchTimeout;
+        document.getElementById('search').addEventListener('input', function () {
+            const query = this.value.trim().toLowerCase(); // Obtener el texto de búsqueda y convertirlo a minúsculas
+
+            // Limpiar el timeout anterior
+            clearTimeout(searchTimeout);
+
+            // Usar un timeout para evitar múltiples ejecuciones a medida que el usuario escribe
+            searchTimeout = setTimeout(() => {
+                filtrarDivs(query);
+            }, 300); // Esperar 300ms después de que el usuario deje de escribir
+        });
+
+        // Función de filtrado de divs
+        function filtrarDivs(query) {
+            const divs = document.querySelectorAll('.nuevo-div'); // Obtener todos los divs mostrados en el contenedor
+
+            divs.forEach(div => {
+                // Concatenar el texto de todos los campos en el div para la búsqueda
+                const textoDiv = div.querySelector('.puesto-div').value.toLowerCase() +
+                    div.querySelector('.info-div').value.toLowerCase() +
+                    div.querySelector('.tipo-contratacion-div').value.toLowerCase() +
+                    div.querySelector('.educacion-div').value.toLowerCase() +
+                    div.querySelector('.ubicacion-div').value.toLowerCase() +
+                    div.querySelector('.salario-div').value.toLowerCase();
+
+                if (textoDiv.includes(query)) {
+                    div.style.display = ''; // Mostrar el div si coincide
+                } else {
+                    div.style.display = 'none'; // Ocultar el div si no coincide
+                }
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>
